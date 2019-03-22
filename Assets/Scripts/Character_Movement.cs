@@ -15,14 +15,14 @@ public class Character_Movement : MonoBehaviour {
 
     Rigidbody2D rb2d;
     Animation anim;
-    Collider2D collider;
+    //Collider2D collider;
 
     
 
     // Use this for initialization
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        //collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -63,10 +63,10 @@ public class Character_Movement : MonoBehaviour {
             isGrouded = true;
         }
         
-        if (Input.GetAxis("Vertical") < 0)
-        {
-            collider.isTrigger = true;
-        }
+       // if (Input.GetAxis("Vertical") < 0)
+        //{
+       //     collider.isTrigger = true;
+        //}
     }
 }
 
