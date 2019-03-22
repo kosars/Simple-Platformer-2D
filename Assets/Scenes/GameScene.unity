@@ -926,9 +926,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1596030299}
   - component: {fileID: 1596030302}
-  - component: {fileID: 1596030301}
   - component: {fileID: 1596030300}
   - component: {fileID: 1596030303}
+  - component: {fileID: 1596030301}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1058,8 +1058,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81580b933b7b64d4d8c1ba75a27b9828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 0.05
-  JumpForce: 10.3
+  MovementSpeed: 0
+  JumpForce: 2
+  FlyingSpeed: 0.2
+  VerticalMove: 0
+  infinitieJump: 0
+  isFlying: 1
 --- !u!1001 &1607953560
 PrefabInstance:
   m_ObjectHideFlags: 0
