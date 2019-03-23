@@ -15,17 +15,11 @@ public class Character_Movement : MonoBehaviour {
 
     Rigidbody2D rb2d;
     Animation anim;
-    //Collider2D collider;
 
-    
-
-    // Use this for initialization
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
-        //collider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
 
@@ -45,7 +39,7 @@ public class Character_Movement : MonoBehaviour {
         if (isFlying)
         {
             VerticalMove = Input.GetAxis("Vertical");
-            rb2d.position = new Vector2(rb2d.position.x + MovementSpeed, rb2d.position.y + VerticalMove*FlyingSpeed/* * Time.deltaTime*100f*/ );
+            rb2d.position = new Vector2(rb2d.position.x + MovementSpeed, rb2d.position.y + VerticalMove*FlyingSpeed);
         }
         else 
         {
@@ -59,13 +53,13 @@ public class Character_Movement : MonoBehaviour {
         
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log(collision.gameObject.name);
             isGrouded = true;
         }
-        
-       // if (Input.GetAxis("Vertical") < 0)
+
+        // if (Input.GetAxis("Vertical") < 0)
         //{
-       //     collider.isTrigger = true;
+        //     collider.isTrigger = true;
+        // collision.gameObject.collider.isTrigger = true;
         //}
     }
 }

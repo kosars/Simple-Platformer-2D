@@ -43,12 +43,24 @@ public class PlatformGenerator : MonoBehaviour
         //спавн платформ если позиция больше последней
         if (CharacterPosition.x > LastPosition.x)
         {
-            Debug.Log("TRUE _____");
+            Debug.Log("_______TRUE _____");
             LastPosition.x +=  (maxX-minX);
             //Вызов спавна платфом
-            SpawnPlatforms(LastPosition.x);
+            //SpawnPlatforms(LastPosition.x);
+            NewPlatform(LastPosition.x);
         }
     }
+
+    private void NewPlatform(float posx)
+    {
+        Vector2 spawnPosition = new Vector2(posx, 0);
+        Instantiate(Platform, spawnPosition, Quaternion.identity);
+        Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
+    }
+
+
+
+
 
     //метод спавна платформ относительно Х
     private void SpawnPlatforms(float posX)
@@ -78,4 +90,5 @@ public class PlatformGenerator : MonoBehaviour
             Platform.transform.position = spawnPosition;
         }*/
     }
+    
 }

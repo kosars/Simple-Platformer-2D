@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2139920380743975351}
   - component: {fileID: 2139920380743975305}
   - component: {fileID: 3342143712442216550}
-  - component: {fileID: 5535176738872869647}
   - component: {fileID: 4520725744736088207}
   m_Layer: 0
   m_Name: Platform
@@ -123,24 +122,6 @@ EdgeCollider2D:
   - {x: -0.5024071, y: 0.5110709}
   - {x: 0.25716928, y: 0.4820701}
   - {x: 0.5, y: 0.4684797}
---- !u!114 &5535176738872869647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139920380743975349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd811335a2e4994d88b315d6664ccab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Platform: {fileID: 0}
-  CharacterTransform: {fileID: 0}
-  numberOfPlatforms: 10
-  levelHeight: 10
-  minX: 3
-  maxX: 6
 --- !u!251 &4520725744736088207
 PlatformEffector2D:
   m_ObjectHideFlags: 0
