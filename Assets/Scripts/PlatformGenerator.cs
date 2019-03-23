@@ -5,57 +5,77 @@ using UnityEngine;
 public class PlatformGenerator : MonoBehaviour
 {
     public GameObject Platform;
-    public GameObject Character;
-
     public Transform CharacterTransform;
-    private Vector2 CharacterPosition;
+    public Vector2 CharacterPosition;
+    //хранение последней позиции персонажа
+    public Vector2 LastPosition;
+    
 
     //колво спавна платформ
-    public int numberOfPlatforms = 10;
+    [Range(0f, 25f)] [SerializeField] public int numberOfPlatforms;
     //высота спавна платформ
-    public float levelHeight = 10;
+    [Range(0f, 25f)] [SerializeField] public float levelHeight;
     //ширина спавна платформ
-    public float minX = 3;
-    public float maxX = 6;
+    [Range(0f, 100f)] [SerializeField] public float minX ;
+    [Range(0f, 200f)] public float maxX;
 
-    //хранение последней позиции персонажа
-    private Vector2 LastPosition;
+    
 
     private void Start()
     {
+        Platform = GameObject.Find("Platform");
+        GameObject Character =GameObject.Find("Character");
         CharacterTransform = Character.GetComponent<Transform>();
+        
+        Debug.Log("START LOG:");
+        Debug.Log("MAX-MIN:");
+        Debug.Log(maxX - minX);
 
         //обнуление переменных
-        LastPosition = new Vector2(0, 0);
-
+        LastPosition = new Vector2(20, 0);
+        Debug.Log(LastPosition);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //обновление текущей позиции персонажа
         CharacterPosition = CharacterTransform.position;
-        Debug.Log(CharacterPosition.x);
-
         //спавн платформ если позиция больше последней
-        if (CharacterPosition.x >= LastPosition.x)
+        if (CharacterPosition.x > LastPosition.x)
         {
-            LastPosition.x = CharacterPosition.x + (maxX-minX);
-            Debug.Log("Spawned");
+            Debug.Log("TRUE _____");
+            LastPosition.x +=  (maxX-minX);
             //Вызов спавна платфом
             SpawnPlatforms(LastPosition.x);
         }
     }
-    
+
     //метод спавна платформ относительно Х
     private void SpawnPlatforms(float posX)
     {
         Vector2 spawnPosition = new Vector2();
 
+        Debug.Log("POSITION OF NEW PLATFORM:");
+        spawnPosition.x = Random.Range(posX + minX, posX + maxX);
+        spawnPosition.y = Random.Range(-levelHeight, levelHeight);
+        Debug.Log(spawnPosition);
+        Instantiate(Platform, spawnPosition, Quaternion.identity);
+        /* for (int i = 0; i < numberOfPlatforms; i++)
+         {
+             spawnPosition.x = Random.Range( posX + minX, posX + maxX);
+             spawnPosition.y = Random.Range(-levelHeight, levelHeight);
+             Instantiate(Platform, spawnPosition, Quaternion.identity);
+             Debug.Log("Spawn Pos:");
+             Debug.Log(spawnPosition);
+
+         }
+
         for (int i = 0; i < numberOfPlatforms; i++)
         {
-            spawnPosition.x += Random.Range( posX + minX, posX + maxX);
+            spawnPosition.x = Random.Range(posX + minX, posX + maxX);
             spawnPosition.y = Random.Range(-levelHeight, levelHeight);
-            Instantiate(Platform, spawnPosition, Quaternion.identity);
-        }
+            GameObject.Instantiate(Platform);
+            Platform.transform.position = spawnPosition;
+        }*/
     }
 }

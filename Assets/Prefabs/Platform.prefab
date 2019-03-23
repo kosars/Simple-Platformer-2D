@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139920380743975349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: -2.01, z: 0}
-  m_LocalScale: {x: 8.542552, y: 0.48279643, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -135,6 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd811335a2e4994d88b315d6664ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Platform: {fileID: 0}
+  CharacterTransform: {fileID: 0}
+  numberOfPlatforms: 10
+  levelHeight: 10
+  minX: 3
+  maxX: 6
 --- !u!251 &4520725744736088207
 PlatformEffector2D:
   m_ObjectHideFlags: 0
