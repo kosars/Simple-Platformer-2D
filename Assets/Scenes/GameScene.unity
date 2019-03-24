@@ -380,6 +380,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1077787626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7817669224438173964, guid: 9b90e0312f80e344cbad11f98e1aac33,
+    type: 3}
+  m_PrefabInstance: {fileID: 7817669223681190998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1077787627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077787626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99bdc8608e03b84459c35bee13e255de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 1.25
+  JumpForce: 0.5
+  JumpScale: 0.25
+  FlyingSpeed: 1
+  MaxJumpNums: 3
+  infinitieJump: 0
+  isFlying: 0
 --- !u!4 &1596030299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7817669224438173965, guid: 9b90e0312f80e344cbad11f98e1aac33,
@@ -673,7 +698,7 @@ PrefabInstance:
     - target: {fileID: 7817669224438173962, guid: 9b90e0312f80e344cbad11f98e1aac33,
         type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7817669224438174006, guid: 9b90e0312f80e344cbad11f98e1aac33,
         type: 3}
