@@ -23,17 +23,18 @@ public class PlatformGenerator : MonoBehaviour
 
     private void Start()
     {
-        Platform = GameObject.Find("Platform");
+       // Platform = GameObject.Find("Platform");
         GameObject Character =GameObject.Find("Character");
         CharacterTransform = Character.GetComponent<Transform>();
         
-        Debug.Log("START LOG:");
-        Debug.Log("MAX-MIN:");
-        Debug.Log(maxX - minX);
+        //Debug.Log("START LOG:");
+        //Debug.Log("MAX-MIN:");
+       // Debug.Log(maxX - minX);
 
         //обнуление переменных
-        LastPosition = new Vector2(20, 0);
-        Debug.Log(LastPosition);
+        LastPosition = new Vector2(0, 0);
+        //Debug.Log(LastPosition);
+        
     }
 
     private void FixedUpdate()
@@ -43,11 +44,12 @@ public class PlatformGenerator : MonoBehaviour
         //спавн платформ если позиция больше последней
         if (CharacterPosition.x > LastPosition.x)
         {
-            Debug.Log("_______TRUE _____");
+            //Debug.Log("_______TRUE _____");
             LastPosition.x +=  (maxX-minX);
             //Вызов спавна платфом
             //SpawnPlatforms(LastPosition.x);
-            NewPlatform(LastPosition.x);
+            //NewPlatform(LastPosition.x);
+            SpawnPlatforms(LastPosition.x);
         }
     }
 
@@ -55,7 +57,7 @@ public class PlatformGenerator : MonoBehaviour
     {
         Vector2 spawnPosition = new Vector2(posx, 0);
         Instantiate(Platform, spawnPosition, Quaternion.identity);
-        Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
+       // Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
     }
 
 
@@ -67,21 +69,22 @@ public class PlatformGenerator : MonoBehaviour
     {
         Vector2 spawnPosition = new Vector2();
 
-        Debug.Log("POSITION OF NEW PLATFORM:");
-        spawnPosition.x = Random.Range(posX + minX, posX + maxX);
+       // Debug.Log("POSITION OF NEW PLATFORM:");
+        spawnPosition.x = Random.Range(posX , posX + maxX);
         spawnPosition.y = Random.Range(-levelHeight, levelHeight);
-        Debug.Log(spawnPosition);
+        //Debug.Log(spawnPosition);
         Instantiate(Platform, spawnPosition, Quaternion.identity);
-        /* for (int i = 0; i < numberOfPlatforms; i++)
+        for (int i = 0; i < numberOfPlatforms; i++)
          {
              spawnPosition.x = Random.Range( posX + minX, posX + maxX);
              spawnPosition.y = Random.Range(-levelHeight, levelHeight);
              Instantiate(Platform, spawnPosition, Quaternion.identity);
-             Debug.Log("Spawn Pos:");
-             Debug.Log(spawnPosition);
+             //Debug.Log("Spawn Pos:");
+            // Debug.Log(spawnPosition);
 
          }
-
+        //Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
+        /* 
         for (int i = 0; i < numberOfPlatforms; i++)
         {
             spawnPosition.x = Random.Range(posX + minX, posX + maxX);
@@ -90,5 +93,5 @@ public class PlatformGenerator : MonoBehaviour
             Platform.transform.position = spawnPosition;
         }*/
     }
-    
+
 }
