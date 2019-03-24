@@ -60,7 +60,7 @@ public class Character_VelocityMove : MonoBehaviour
     {
             rb2d.AddForce(new Vector2(rb2d.velocity.x + JumpScale, JumpForce *10f + Time.fixedDeltaTime ), ForceMode2D.Impulse);
             JumpNum++;
-            isGrouded = false;  
+            //isGrouded = false;  
     }
 
     void OnCollisionEnter2D(Collision2D collision)
