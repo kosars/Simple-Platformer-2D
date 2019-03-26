@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour
 {
     public Transform CamTransform;
     public GameObject target;// обьект следования камеры
+    
     public Vector2 pos; // позиция камеры относительно персонажа;
     private Vector2 targetPos;
     public float maxHeight = 10f; //максимальная позиция, на которую может подняться камера
@@ -15,6 +16,8 @@ public class CameraScript : MonoBehaviour
     void Start()
     {
          CamTransform = GetComponent<Transform>();
+         GameObject JumpBlocker = GameObject.Find("JumpBlocker");
+         JumpBlocker.transform.position = new Vector2(0, maxHeight + 5f); 
     }
 
     // Update is called once per frame
