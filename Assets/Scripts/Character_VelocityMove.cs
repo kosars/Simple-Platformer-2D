@@ -98,12 +98,10 @@ public class Character_VelocityMove : MonoBehaviour
     {
         if(BonusActive && BonusTime < MaxBonusTime) //проверка наличия бонуса и не истекло ли время его жизни
         {
-            Debug.Log("БОНУС АКТИВЕН");
             BonusTime += 0.02f;
         }
-        else
+        else if(BonusTime>MaxBonusTime)
         {
-            Debug.Log("БОНУСА НЕМА");
             DisableBonuses();
         }
     }
