@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    //public GameObject objectThatDestroys;
-    //public Transform CharacterTransform;
-    //public Vector2 CharacterPosition;
-    //[Range(-200f, 0f)] public float DestroyLenght;
+    public Transform CamTransform;
+    public GameObject target;// обьект следования камеры
+    public Vector2 pos; // позиция камеры относительно персонажа;
+    private Vector2 targetPos;
+    public float maxHeight = 10f; //максимальная позиция, на которую может подняться камера
+    public float minHeight= -10f;//максимальная позиция, на которую может опуститься камера
 
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject Character = GameObject.Find("Character");
-       // CharacterTransform = Character.GetComponent<Transform>();
+         CamTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        //обновление текущей позиции персонажа
-       // CharacterPosition = CharacterTransform.position;
-       
+        //обновление текущей позиции обьекта слежения
+        targetPos = target.transform.position;
+        //обновление текущей позиции камеры
+        if(targetPos.y> maxHeight || targetPos.y<minHeight)
+        {
+            CamTransform.position = new Vector3((targetPos.x + pos.x), CamTransform.position.y, -1);
+        }
+        else
+        {
+            CamTransform.position = new Vector3((targetPos.x + pos.x) + Time.fixedDeltaTime, (targetPos.y + pos.y) + Time.fixedDeltaTime, -1);
+        }
+        
     }
 }
