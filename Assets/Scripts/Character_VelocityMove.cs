@@ -16,14 +16,14 @@ public class Character_VelocityMove : MonoBehaviour
     //Счетчикии и максимальные значения
     public int MaxJumpNums;//максимальное колво прыжков
     private int JumpNum=0;//счетчик кол-ва прыжков
-   
-    public float BonusTime = 0;// счетчие времени жизни бонуса [сек* Timestep(0.02 cек)]
+
+    private float BonusTime = 0;// счетчие времени жизни бонуса [сек* Timestep(0.02 cек)]
     private float MaxBonusTime = 10f;//максимальное  время жизни бонуса [сек]
 
     //
     private bool BonusActive = false; //индикатор активности бонуса
-    [SerializeField] public bool infinitieJump; //Бесконечный прыжок
-    [SerializeField] public bool isFlying; //Полет
+    private bool infinitieJump = false; //Бесконечный прыжок
+    private bool isFlying = false; //Полет
 
     //
     Rigidbody2D rb2d;
@@ -41,6 +41,11 @@ public class Character_VelocityMove : MonoBehaviour
         Move();//движение
         Jump();//проверка прыжка  
         if (Input.GetButtonDown("Cancel"))
+        {
+            Reset();
+        }
+        
+        if (rb2d.position.y<-20) //проверка на выпадание за экран
         {
             Reset();
         }
