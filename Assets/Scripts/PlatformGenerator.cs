@@ -6,9 +6,9 @@ public class PlatformGenerator : MonoBehaviour
 {
     public GameObject Platform;
     public Transform CharacterTransform;
-    private Vector2 CharacterPosition;
+    public Vector2 CharacterPosition;
     //хранение последней позиции персонажа
-    private Vector2 LastPosition;
+    public Vector2 LastPosition;
     
 
     //колво спавна платформ
