@@ -10,7 +10,7 @@ public class PlatformBonusSpawner : MonoBehaviour
     {
         float chance = Random.Range(1, 100);
         Transform platform = GetComponent<Transform>();
-        if (chance > 90)
+        if (chance > 96)
         {
             GameObject bonus = Instantiate(BonusObj[Random.Range(0, BonusObj.Length)], new Vector2(platform.position.x, platform.position.y + 1f), Quaternion.identity) as GameObject;
             bonus.transform.parent = transform;

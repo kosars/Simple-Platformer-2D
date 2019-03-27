@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
-    public GameObject Platform;
+    public GameObject[] Platform;
     public Transform CharacterTransform;
     public Vector2 CharacterPosition;
     //хранение последней позиции персонажа
@@ -53,45 +53,55 @@ public class PlatformGenerator : MonoBehaviour
         }
     }
 
-    private void NewPlatform(float posx)
-    {
-        Vector2 spawnPosition = new Vector2(posx, 0);
-        Instantiate(Platform, spawnPosition, Quaternion.identity);
-       // Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
-    }
-
-
-
-
-
     //метод спавна платформ относительно Х
     private void SpawnPlatforms(float posX)
     {
+        float ChanceOfSpawn; //шанс спавна платформы какого-то типа [%]
         Vector2 spawnPosition = new Vector2();
 
-       // Debug.Log("POSITION OF NEW PLATFORM:");
-        spawnPosition.x = Random.Range(posX , posX + maxX);
-        spawnPosition.y = Random.Range(-levelHeight, levelHeight);
-        //Debug.Log(spawnPosition);
-        Instantiate(Platform, spawnPosition, Quaternion.identity);
         for (int i = 0; i < numberOfPlatforms; i++)
          {
-             spawnPosition.x = Random.Range( posX + minX, posX + maxX);
-             spawnPosition.y = Random.Range(-levelHeight, levelHeight);
-             Instantiate(Platform, spawnPosition, Quaternion.identity);
-             //Debug.Log("Spawn Pos:");
-            // Debug.Log(spawnPosition);
-
-         }
-        //Debug.Log("PLATFOR HAS BEEN CONSTRUCTED!");
-        /* 
-        for (int i = 0; i < numberOfPlatforms; i++)
-        {
-            spawnPosition.x = Random.Range(posX + minX, posX + maxX);
+            
+            //позиция спавна
+            spawnPosition.x = Random.Range( posX + minX, posX + maxX);
             spawnPosition.y = Random.Range(-levelHeight, levelHeight);
-            GameObject.Instantiate(Platform);
-            Platform.transform.position = spawnPosition;
-        }*/
+
+            ChanceOfSpawn = Random.Range(0, 100); //шанс спавна платформы какого-то типа [%]
+
+            if ((spawnPosition.y) <= (-levelHeight/2)) // если позиция меньше  нижней 1/4 экрана
+            {
+                
+
+                if (ChanceOfSpawn >= 55)//45% шанс спавна ломающейся платформы
+                {
+                    Instantiate(Platform[1], spawnPosition, Quaternion.identity);
+                }
+                else if (ChanceOfSpawn >= 50)//5% шанс спавна ничего
+                {
+
+                }
+                else//cпавн обыкновенной платформы
+                {
+                    Instantiate(Platform[0], spawnPosition, Quaternion.identity);
+                }
+            }
+
+            else if((spawnPosition.y) >= (-levelHeight / 2))// если позиция больше нижней 1/4 экрана
+            {
+                if (ChanceOfSpawn >= 95)//5% шанс спавна ломающейся платформы
+                {
+                    Instantiate(Platform[1], spawnPosition, Quaternion.identity);
+                }
+                else if (ChanceOfSpawn >= 90)//5% шанс спавна ничего
+                { }
+                else//cпавн обыкновенной платформы
+                {
+                    Instantiate(Platform[0], spawnPosition, Quaternion.identity);
+                }
+            }
+            
+            
+        }
     }
 
 }

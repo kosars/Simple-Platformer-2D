@@ -718,9 +718,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6385267342903118339, guid: c33702b3ab080c04fad48565950259a2,
         type: 3}
+      propertyPath: Platform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385267342903118339, guid: c33702b3ab080c04fad48565950259a2,
+        type: 3}
       propertyPath: CharacterTransform
       value: 
       objectReference: {fileID: 1596030299}
+    - target: {fileID: 6385267342903118339, guid: c33702b3ab080c04fad48565950259a2,
+        type: 3}
+      propertyPath: Platform.Array.data[0]
+      value: 
+      objectReference: {fileID: 2139920380743975349, guid: 136619e14161d92479ced2f2b1b3dbd1,
+        type: 3}
+    - target: {fileID: 6385267342903118339, guid: c33702b3ab080c04fad48565950259a2,
+        type: 3}
+      propertyPath: Platform.Array.data[1]
+      value: 
+      objectReference: {fileID: 8093424130367076840, guid: a5e47c33346e3fd458b2057253c46376,
+        type: 3}
+    - target: {fileID: 6385267342903118339, guid: c33702b3ab080c04fad48565950259a2,
+        type: 3}
+      propertyPath: levelHeight
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c33702b3ab080c04fad48565950259a2, type: 3}
 --- !u!1001 &7817669223681190998

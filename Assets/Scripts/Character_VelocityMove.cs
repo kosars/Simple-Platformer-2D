@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character_VelocityMove : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class Character_VelocityMove : MonoBehaviour
         BonusCheck();//проверка бонусов
         Move();//движение
         Jump();//проверка прыжка  
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Reset();
+        }
     }
 
     private void Move()
@@ -112,5 +117,12 @@ public class Character_VelocityMove : MonoBehaviour
         isFlying = false;
         infinitieJump = false;
         BonusTime = 0; 
+    }
+
+    private void Reset()
+    {
+        string scene = SceneManager.GetActiveScene().name;
+        //загрузка текущей сцены
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
