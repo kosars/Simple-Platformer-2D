@@ -40,14 +40,10 @@ public class Character_VelocityMove : MonoBehaviour
         BonusCheck();//проверка бонусов
         Move();//движение
         Jump();//проверка прыжка  
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Reset();
-        }
         
         if (rb2d.position.y<-20) //проверка на выпадание за экран
         {
-            Reset();
+            //Reset();
         }
     }
 
@@ -124,10 +120,5 @@ public class Character_VelocityMove : MonoBehaviour
         BonusTime = 0; 
     }
 
-    private void Reset()
-    {
-        string scene = SceneManager.GetActiveScene().name;
-        //загрузка текущей сцены
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
-    }
+   
 }
