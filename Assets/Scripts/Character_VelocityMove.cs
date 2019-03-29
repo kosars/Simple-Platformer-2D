@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Character_VelocityMove : MonoBehaviour
+public class Character_VelocityMove : MonoBehaviour 
 {
     //физические величины
     [Range(0f, 5f)] [SerializeField] public float MovementSpeed = 3f; //Скорость движения
@@ -25,26 +25,32 @@ public class Character_VelocityMove : MonoBehaviour
     private bool infinitieJump = false; //Бесконечный прыжок
     private bool isFlying = false; //Полет
 
+    
+
     //
     Rigidbody2D rb2d;
     Animation anim;
+
+    public uiScript ui;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        //ui = new uiScript();
     }
 
     private void FixedUpdate()
     {
         BonusCheck();//проверка бонусов
         Move();//движение
-        Jump();//проверка прыжка  
+        Jump();//проверка прыжка 
         
-        if (rb2d.position.y<-20) //проверка на выпадание за экран
+        if (rb2d.position.y < -20) //проверка на выпадание за экран
         {
-            //Reset();
+           ui.Reset();
         }
+
     }
 
     private void Move()
@@ -64,8 +70,10 @@ public class Character_VelocityMove : MonoBehaviour
     //метод прыжка
     private void Jump()
     {
+        
         if (Input.GetButtonDown("Jump") && (JumpNum < MaxJumpNums || infinitieJump) && (!isFlying))
         {
+            
             rb2d.AddForce(new Vector2(rb2d.velocity.x + JumpDistance, JumpForce *10f + Time.fixedDeltaTime ), ForceMode2D.Impulse);
             JumpNum++;
             //isGrouded = false;  
@@ -120,5 +128,6 @@ public class Character_VelocityMove : MonoBehaviour
         BonusTime = 0; 
     }
 
+   
    
 }

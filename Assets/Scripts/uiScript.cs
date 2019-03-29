@@ -6,14 +6,21 @@ using UnityEngine.Audio;
 
 public class uiScript : MonoBehaviour
 {
-    Rigidbody2D rb2d;
+   // public Rigidbody2D rb2d;
+
     public GameObject PauseMenu;
     public GameObject onGame;
-    bool isPaused = false;
+    public GameObject ScoreScreen;
+    bool isPaused = false ;
+
+    public float score;
+
+    public AudioMixer audio;
+    public TextMesh ScoreText;
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        ScoreText = ScoreScreen.GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
@@ -23,11 +30,7 @@ public class uiScript : MonoBehaviour
         {
             Pause();
         }
-
-        if (rb2d.position.y < -20) //проверка на выпадание за экран
-        {
-            Reset();
-        }
+        AddPoints(0.01f);
     }
 
     public void Pause()
@@ -62,5 +65,11 @@ public class uiScript : MonoBehaviour
     {
         //string scene = SceneManager.;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    public void AddPoints(float points)
+    {
+        score += points;
+        ScoreText.text= Mathf.Round(score).ToString();
     }
 }
