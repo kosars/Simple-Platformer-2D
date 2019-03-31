@@ -70,7 +70,7 @@ public class Character_VelocityMove : MonoBehaviour
     }
 
     //метод прыжка
-    private void Jump()
+    public void Jump()
     {
         
         if (Input.GetButtonDown("Jump") && (JumpNum < MaxJumpNums || infinitieJump) && (!isFlying))
