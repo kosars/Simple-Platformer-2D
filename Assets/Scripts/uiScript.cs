@@ -3,34 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
-
+using TMPro;
 public class uiScript : MonoBehaviour
 {
    // public Rigidbody2D rb2d;
 
     public GameObject PauseMenu;
     public GameObject onGame;
-    public GameObject ScoreScreen;
-    bool isPaused = false ;
+    public GameObject DeathScreen;
+    public GameObject RewardScreen;
+    public GameObject BonuseScreen;
+
+    public bool isPaused = false ;
+    public bool isDead = false;
 
     public float score;
+    public int hiscore;
 
-    public AudioMixer audio;
+    //public AudioMixer audio;
     public TextMesh ScoreText;
+    public TextMesh DeathScore;
+    public TextMesh DeathHiScore;
+
+    public TextMeshProUGUI DeathText;
+    public TextMeshProUGUI RewardText;
+    public TextMeshProUGUI BonusesText;
     // Start is called before the first frame update
     void Start()
     {
-        ScoreText = ScoreScreen.GetComponent<TextMesh>();
+        score = 0;
+        hiscore = PlayerPrefs.GetInt("Hiscore");
+        RewardScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (!isDead)
         {
-            Pause();
+            if (Input.GetButtonDown("Cancel"))
+            {
+                Pause();
+            }
+            AddPoints(0.01f);
         }
-        AddPoints(0.01f);
+       
     }
 
     public void Pause()
@@ -70,6 +87,33 @@ public class uiScript : MonoBehaviour
     public void AddPoints(float points)
     {
         score += points;
+
+        if (score > hiscore)
+        {
+            RewardScreen.SetActive(true);
+        }
+
         ScoreText.text= Mathf.Round(score).ToString();
+    }
+
+    public void Death()
+    {   
+        isDead = true;
+        if (score > hiscore)
+        {
+            hiscore = Mathf.RoundToInt(score);
+            PlayerPrefs.SetInt("Hiscore", hiscore);
+            DeathText.SetText("NEW HISCORE!!!");
+        }
+        else
+        {
+            DeathText.SetText("TRY AGAIN");
+        }
+        PauseMenu.SetActive(false);
+        onGame.SetActive(false);
+        DeathScreen.SetActive(true);
+        DeathScore.text = Mathf.Round(score).ToString();
+        DeathHiScore.text = hiscore.ToString();
+        
     }
 }

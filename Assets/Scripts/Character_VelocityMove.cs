@@ -42,15 +42,17 @@ public class Character_VelocityMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        BonusCheck();//проверка бонусов
-        Move();//движение
-        Jump();//проверка прыжка 
-        
-        if (rb2d.position.y < -20) //проверка на выпадание за экран
+        if (!ui.isDead && !ui.isPaused)
         {
-           ui.Reset();
-        }
+            BonusCheck();//проверка бонусов
+            Move();//движение
+            Jump();//проверка прыжка 
 
+            if (rb2d.position.y < -20) //проверка на выпадание за экран
+            {
+                ui.Death();
+            }
+        }
     }
 
     private void Move()
@@ -96,6 +98,8 @@ public class Character_VelocityMove : MonoBehaviour
             DisableBonuses();//вызов отключения остальных бонусов
             isFlying = true;//включение полета
             BonusActive = true;
+            ui.BonusesText.SetText("Fly Bonus!");
+            ui.BonuseScreen.SetActive(true);
             GameObject.Destroy(collision.gameObject, 0); //уничтожение триггера
         }
         else if (collision.gameObject.tag == "JumpBonus") //если подобрали бонус полёта
@@ -104,6 +108,8 @@ public class Character_VelocityMove : MonoBehaviour
             DisableBonuses();//вызов отключения остальных бонусов
             infinitieJump = true;//включение бесконечного прыжка
             BonusActive = true;
+            ui.BonusesText.SetText("Infinite Jump Bonus!");
+            ui.BonuseScreen.SetActive(true);
             GameObject.Destroy(collision.gameObject, 0); //уничтожение триггера
         }
     }
@@ -125,7 +131,8 @@ public class Character_VelocityMove : MonoBehaviour
         BonusActive = false;
         isFlying = false;
         infinitieJump = false;
-        BonusTime = 0; 
+        BonusTime = 0;
+        ui.BonuseScreen.SetActive(false);
     }
 
    
