@@ -13,6 +13,9 @@ public class uiScript : MonoBehaviour
     public GameObject DeathScreen;
     public GameObject RewardScreen;
     public GameObject BonuseScreen;
+    public GameObject jumpButton;
+    public GameObject flyJoystick;
+    public Joystick joystick;
 
     public bool isPaused = false ;
     public bool isDead = false;
@@ -34,6 +37,8 @@ public class uiScript : MonoBehaviour
         score = 0;
         hiscore = PlayerPrefs.GetInt("Hiscore");
         RewardScreen.SetActive(false);
+        flyJoystick.SetActive(false);
+        jumpButton.SetActive(true);
     }
 
     // Update is called once per frame

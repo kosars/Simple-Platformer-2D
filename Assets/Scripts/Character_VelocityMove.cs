@@ -23,13 +23,13 @@ public class Character_VelocityMove : MonoBehaviour
     //
     private bool BonusActive = false; //индикатор активности бонуса
     private bool infinitieJump = false; //Бесконечный прыжок
-    private bool isFlying = false; //Полет
+    public bool isFlying = false; //Полет
 
     
 
     //
     Rigidbody2D rb2d;
-    Animation anim;
+    //Animation anim;
 
     public uiScript ui;
 
@@ -40,18 +40,41 @@ public class Character_VelocityMove : MonoBehaviour
         //ui = new uiScript();
     }
 
+    private void Update()
+    {
+        if (!ui.isDead && !ui.isPaused)
+        {
+
+            //проверка прыжка
+            if (Input.GetButtonDown("Jump") || (Input.touchCount > 0))//прыжок при нажатии пробела или тачскрина
+            { Jump();}
+
+            if (rb2d.position.y < -20) //проверка на выпадание за экран
+            {
+                ui.Death();
+            }
+            //взятие напраления для полета
+            if(isFlying)
+            {
+                if(Input.GetAxis("Vertical") != 0)
+                {
+                    VerticalAxis = Input.GetAxis("Vertical");
+                }
+                else
+                {
+                    VerticalAxis = ui.joystick.Vertical;
+                }
+            }
+            
+        }
+    }
+
     private void FixedUpdate()
     {
         if (!ui.isDead && !ui.isPaused)
         {
             BonusCheck();//проверка бонусов
             Move();//движение
-            Jump();//проверка прыжка 
-
-            if (rb2d.position.y < -20) //проверка на выпадание за экран
-            {
-                ui.Death();
-            }
         }
     }
 
@@ -59,7 +82,6 @@ public class Character_VelocityMove : MonoBehaviour
     {
         if (isFlying)
         {
-            VerticalAxis = Input.GetAxis("Vertical");
             rb2d.velocity = new Vector2(MovementSpeed * 10f, VerticalAxis * FlyingSpeed * 10f);   
         }
         else
@@ -73,12 +95,11 @@ public class Character_VelocityMove : MonoBehaviour
     public void Jump()
     {
         
-        if (Input.GetButtonDown("Jump") && (JumpNum < MaxJumpNums || infinitieJump) && (!isFlying))
+        if((JumpNum < MaxJumpNums || infinitieJump) && (!isFlying))
         {
             
             rb2d.AddForce(new Vector2(rb2d.velocity.x + JumpDistance, JumpForce *10f + Time.fixedDeltaTime ), ForceMode2D.Impulse);
             JumpNum++;
-            //isGrouded = false;  
         }
     }
 
@@ -98,8 +119,10 @@ public class Character_VelocityMove : MonoBehaviour
             DisableBonuses();//вызов отключения остальных бонусов
             isFlying = true;//включение полета
             BonusActive = true;
-            ui.BonusesText.SetText("Fly Bonus!");
+            ui.BonusesText.SetText("Fly Bonus!"); //вывод названия бонуса на экран
             ui.BonuseScreen.SetActive(true);
+            ui.jumpButton.SetActive(false);//кнопка прыжка неактивна
+            ui.flyJoystick.SetActive(true);//джойстик полета активен
             GameObject.Destroy(collision.gameObject, 0); //уничтожение триггера
         }
         else if (collision.gameObject.tag == "JumpBonus") //если подобрали бонус полёта
@@ -108,7 +131,7 @@ public class Character_VelocityMove : MonoBehaviour
             DisableBonuses();//вызов отключения остальных бонусов
             infinitieJump = true;//включение бесконечного прыжка
             BonusActive = true;
-            ui.BonusesText.SetText("Infinite Jump Bonus!");
+            ui.BonusesText.SetText("Infinite Jump Bonus!");//вывод названия бонуса на экран
             ui.BonuseScreen.SetActive(true);
             GameObject.Destroy(collision.gameObject, 0); //уничтожение триггера
         }
@@ -118,11 +141,11 @@ public class Character_VelocityMove : MonoBehaviour
     {
         if(BonusActive && BonusTime < MaxBonusTime) //проверка наличия бонуса и не истекло ли время его жизни
         {
-            BonusTime += 0.02f;
+            BonusTime += 0.02f;//обновляем текущее врямя бонуса
         }
         else if(BonusTime>MaxBonusTime)
         {
-            DisableBonuses();
+            DisableBonuses();//отключаем бонус если время его жизни вышло
         }
     }
 
@@ -132,7 +155,9 @@ public class Character_VelocityMove : MonoBehaviour
         isFlying = false;
         infinitieJump = false;
         BonusTime = 0;
+        ui.flyJoystick.SetActive(false);
         ui.BonuseScreen.SetActive(false);
+        ui.jumpButton.SetActive(true);
     }
 
    
