@@ -15,7 +15,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         CamTransform = GetComponent<Transform>();
+         //CamTransform = GetComponent<Transform>();
          GameObject JumpBlocker = GameObject.Find("JumpBlocker");
          JumpBlocker.transform.position = new Vector2(0, maxHeight + 5f); 
     }

@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 7817669224438173965}
   - component: {fileID: 7817669224438173960}
   - component: {fileID: 7817669224438173962}
-  - component: {fileID: 7817669224438174006}
   - component: {fileID: 7817669224438173963}
+  - component: {fileID: 3137929095041280567}
+  - component: {fileID: 4714122107858564032}
+  - component: {fileID: 6746532652233536146}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -103,21 +105,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7817669224438174006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7817669224438173964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3617658ed91d634a87b7d6aee4d27e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Trigger: {fileID: 4563610869081891804, guid: c6b42b3a3d607b743a235db24988bce2, type: 3}
-  TriggerPosition: {x: 0, y: 0}
-  TriggerDistance: 20
 --- !u!61 &7817669224438173963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,3 +131,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3137929095041280567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817669224438173964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb926d7ae97b45488a8b61407a2eeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infinitieJump: 0
+  isFlying: 0
+  ui: {fileID: 0}
+--- !u!114 &4714122107858564032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817669224438173964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96cd5342b341b1a4581707c72230b313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpForce: 0
+  jumpVelocity: 0
+  movementSpeed: 0
+  flySpeed: 0
+--- !u!114 &6746532652233536146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817669224438173964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197287422f8d0c24ba4ad59509a43df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isJumped: 0
+  isDead: 0
+  isPaused: 0
+  rb: {fileID: 0}
+  ui: {fileID: 0}
+  move: {fileID: 0}
+  bs: {fileID: 0}

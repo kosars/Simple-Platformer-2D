@@ -36,9 +36,9 @@ public class uiScript : MonoBehaviour
     {
         score = 0;
         hiscore = PlayerPrefs.GetInt("Hiscore");
-        RewardScreen.SetActive(false);
-        flyJoystick.SetActive(false);
-        jumpButton.SetActive(true);
+        RewardScreen.SetActive(false);;
+        jumpButton.SetActive(false);//кнопка прыжка неактивна
+        flyJoystick.SetActive(false);//джойстик полета активен
     }
 
     // Update is called once per frame
@@ -86,7 +86,7 @@ public class uiScript : MonoBehaviour
     public void LoadMenu()
     {
         //string scene = SceneManager.;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Application.Quit();
     }
 
     public void AddPoints(float points)
@@ -95,7 +95,7 @@ public class uiScript : MonoBehaviour
 
         if (score > hiscore)
         {
-            RewardScreen.SetActive(true);
+            ScoreText.color = Color.red;
         }
 
         ScoreText.text= Mathf.Round(score).ToString();

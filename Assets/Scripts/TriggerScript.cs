@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerScript : MonoBehaviour
 {
     public GameObject Trigger;
+    public uiScript ui;
     
     public Vector2 TriggerPosition;//хранение позиции триггера спавна
     [Range(0f, 100f)] [SerializeField] public float TriggerDistance; //расстояние спавна триггера
@@ -14,12 +15,7 @@ public class TriggerScript : MonoBehaviour
 
     private void Start()
     {
-        TriggerPosition = Trigger.transform.position;
-    }
-
-    private void Update()
-    {
-
+        TriggerPosition = new Vector2(ui.hiscore,0);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -27,9 +23,8 @@ public class TriggerScript : MonoBehaviour
         //Debug.Log("TriggerEntered");
         if (coll.gameObject.tag == "SpawnTrigger" )
         {
-            TriggerPosition.x += TriggerDistance; //обновление позиции триггера
             GameObject.Destroy(coll.gameObject,0); //уничтожение триггера
-            Instantiate(Trigger, TriggerPosition, Quaternion.identity); //создание нового триггера
+            //Instantiate(Trigger, TriggerPosition, Quaternion.identity); //создание нового триггера
         }
     }
 
