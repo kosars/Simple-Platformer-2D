@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2139920380743975349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f85c66911e7a2884987427243b46f38d, type: 3}
-  m_Color: {r: 0.8584906, g: 0.068841234, b: 0.7284666, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5cab1e3282a81104087ff67c0c23dbb4, type: 3}
+  m_Color: {r: 0.89411765, g: 0.95686275, b: 0.99215686, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,10 +99,14 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.5877031, y: -0.47946316}
-  - {x: -0.46327674, y: 0.4921481}
-  - {x: 0.25716928, y: 0.4820701}
-  - {x: 0.5, y: 0.4684797}
+  - {x: -2.5656717, y: 0.4632938}
+  - {x: -2.365686, y: 0.56916857}
+  - {x: -1.9566215, y: 0.5831764}
+  - {x: -1.6188414, y: 0.57721776}
+  - {x: -1.4794005, y: 0.5771724}
+  - {x: -0.5238774, y: 0.5716864}
+  - {x: 0.20793128, y: 0.5767586}
+  - {x: 2.4763272, y: 0.5812494}
 --- !u!251 &4520725744736088207
 PlatformEffector2D:
   m_ObjectHideFlags: 0

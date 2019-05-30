@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if(rb.velocity.y > 0 && !Input.GetButton("Jump")) //если прыжок больше не нажат,заставляет тело падать
+        else if(rb.velocity.y > 0 && !Input.GetButton("Jump") && (Input.touchCount < 1) ) //если прыжок больше не нажат,заставляет тело падать
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
